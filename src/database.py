@@ -18,3 +18,4 @@ elements = {'H': '1.008', 'He': '4.002602', 'Li': '6.94', 'Be': '9.0121831', 'B'
 
 HEIGHT = 600
 WIDTH = 600
+LENGHT_BALL = 8

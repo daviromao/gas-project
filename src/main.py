@@ -1,35 +1,39 @@
 import pygame
-from database import WIDTH, HEIGHT
-from functions import generateParticles
+from pygame.locals import *
+from database import WIDTH, HEIGHT, LENGHT_BALL, elements
+from functions import generateParticles, collideWall, checkCollision
 
-BLACK = pygame.Color(0, 0, 0)
+BLUE = pygame.Color(100, 100, 200)
 WHITE = pygame.Color(255, 255, 255)
 
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption('Ideal Gas')
 
-particles = generateParticles(30, 120, 298.15)
-
-squares = list(map(lambda particle: pygame.Rect(particle.position.x, particle.position.y, 5, 5), particles))
+muElement = float(elements["Au"])
+particles = generateParticles(50, muElement, 10)
 
 clock = pygame.time.Clock()
 
 while True:
-
-    dt = clock.tick(100)
+    dt = clock.tick(144)
 
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             exit()
 
-    screen.fill(BLACK)
+    screen.fill(WHITE)
 
-    for square in squares: pygame.draw.rect(screen, WHITE, square)
-    for i in range(len(squares)):
-        velocity_x = particles[i].velocity.x
-        velocity_y = particles[i].velocity.y
-        squares[i].move_ip(velocity_x* 0.001 * dt, velocity_y * 0.001 * dt)
+    for particle in particles: pygame.draw.circle(screen, BLUE, (int(particle.position.x), int(particle.position.y)), LENGHT_BALL)
+
+    for i in range(len(particles)):
+        particles[i].move(0.001 * dt)
+        collideWall(particles[i])
+
+    for i in range(len(particles)-2):
+        for j in range(i+1,len(particles)):
+            checkCollision(particles[i], particles[j], dt)
+
 
     pygame.display.update()

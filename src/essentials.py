@@ -1,5 +1,6 @@
-from math import cos, sin, radians
+from math import cos, sin, radians, sqrt
 from random import random
+from database import LENGHT_BALL
 
 class Vector:
     def __init__(self, x=0, y=0, module=0):
@@ -27,7 +28,7 @@ class Velocity(Vector):
         self.y = sin(angle)*speed
 
 class Particle:
-    def __init__(self, mass, speed, position=(0, 0), velocity=(0, 0), radius = 5):
+    def __init__(self, mass, speed, position=(0, 0), velocity=(0, 0), radius = LENGHT_BALL):
         self.mass = mass
         self.position = Vector(position[0], position[1])
         self.velocity = Velocity(velocity[0], velocity[1])
@@ -47,8 +48,14 @@ class Particle:
         return self
 
     def distanceParticles(self, other):
-        return self.position.manhattanDistance(other.position) < self.radius
+        return self.position.manhattanDistance(other.position) <= LENGHT_BALL*2
     
+    def collisionParticles(self, other):
+        dX = abs(self.position.x - other.position.x)
+        dY = abs(self.position.y - other.position.y)
+        d = sqrt(dX*dX + dY*dY)
+
+        return d <= self.radius + other.radius
     def positionVals(self):
         return (self.position.x, self.position.y)
 
