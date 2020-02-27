@@ -14,9 +14,12 @@ class Vector:
     def manhattanDistance(self, vetor):  
         return abs(self.x - vetor.x) + abs(self.y - vetor.y)
 
+    def __str__(self):
+        return str((self.x, self.y))
+
 class Velocity(Vector):
     def __init__(self, x=0, y=0, module=0):
-        super(x, y, module)
+        super().__init__(x, y, module)
     
     def randomizeWithSpeed(self, speed):
         angle = radians(random()*360)
@@ -24,13 +27,30 @@ class Velocity(Vector):
         self.y = sin(angle)*speed
 
 class Particle:
-    def __init__(self, mass, temperature, position=(0, 0), velocity=(0, 0), radius = 1):
+    def __init__(self, mass, speed, position=(0, 0), velocity=(0, 0), radius = 5):
         self.mass = mass
-        self.temperature = temperature
         self.position = Vector(position[0], position[1])
-        self.velocity = Vector(velocity[0], velocity[1])
+        self.velocity = Velocity(velocity[0], velocity[1])
+        self.speed = speed
         self.radius = radius
     
+    def move(self, dt):
+
+        self.position.x += self.velocity.x * dt
+        self.position.y += self.velocity.y * dt
+
+        return self
+
+    def randomizeVelocity(self):
+        self.velocity.randomizeWithSpeed(self.speed)
+
+        return self
+
     def distanceParticles(self, other):
         return self.position.manhattanDistance(other.position) < self.radius
     
+    def positionVals(self):
+        return (self.position.x, self.position.y)
+
+    def __str__(self):
+        return str(self.position) + " " + str(self.velocity)
