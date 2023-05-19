@@ -6,10 +6,10 @@ from settings import *
 
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
-pygame.display.set_caption('Ideal Gas')
+pygame.display.set_caption(f'{PROJECT_NAME} - {ELEMENT} - {TEMPERATURE}K')
 
-muElement = float(elements["Au"])
-particles = generateParticles(50, muElement, 10)
+muElement = float(elements[ELEMENT])
+particles = generateParticles(PARTICLES_NUMBER, muElement, TEMPERATURE)
 
 clock = pygame.time.Clock()
 
