@@ -3,6 +3,10 @@
 This Python project utilizes the Pygame library to simulate the behavior of an ideal gas with static collisions between particles, following the Maxwell distribution. The ideal gas model is a theoretical model that describes the behavior of a gas under certain ideal conditions.
 
 
+<p align="center">
+<img alt="Animation of an ideal gas simulation in a 2D container. Multiple colored atoms are randomly moving and colliding with each other. The collisions are elastic, with atoms bouncing off each other and the walls of the container. The movement of the atoms creates a dynamic and chaotic pattern within the container.", src="https://github.com/daviromao/gas-project/assets/53953664/7dfb8b39-de3d-4708-827d-ae1978048841" width="30%"/>
+</p>
+
 
 
 ## Simulation
