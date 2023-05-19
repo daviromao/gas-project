@@ -1,9 +1,9 @@
 from math import sqrt
 from scipy.constants import k as K_B
 from scipy.stats import maxwell
-from essentials import Vector, Particle
+from classes import Particle
 from random import random
-from database import WIDTH, HEIGHT, LENGHT_BALL
+from settings import WIDTH, HEIGHT, LENGHT_BALL
 
 def atomicMassToSI(mu):
      return (mu / 6.022e+26)
@@ -30,7 +30,6 @@ def generateParticles(n, atomicMass, temperature):
     return particles
 
 def collideWall(particle):
-    colid = False
     if(particle.position.x + LENGHT_BALL > WIDTH):
         particle.position.x = WIDTH-LENGHT_BALL
         particle.velocity.x *= -1
