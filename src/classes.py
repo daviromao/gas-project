@@ -1,6 +1,6 @@
 from math import cos, sin, radians, sqrt
 from random import random
-from database import LENGHT_BALL
+from settings import LENGHT_BALL
 
 class Vector:
     def __init__(self, x=0, y=0, module=0):
