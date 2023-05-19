@@ -1,4 +1,4 @@
-# Ideal Gas Simulation Project
+# Ideal Gas Simulation Project ⚛️🐍
 
 This Python project utilizes the Pygame library to simulate the behavior of an ideal gas with static collisions between particles, following the Maxwell distribution. The ideal gas model is a theoretical model that describes the behavior of a gas under certain ideal conditions.
 
