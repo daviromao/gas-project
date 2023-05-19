@@ -1,8 +1,8 @@
 import pygame
 from pygame.locals import *
-from database import elements
-from utils import generateParticles, collideWall, checkCollision
-from settings import *
+from src.database import elements
+from src.utils import generateParticles, collideWall, checkCollision
+from src.settings import *
 
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))

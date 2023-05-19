@@ -1,9 +1,9 @@
 from math import sqrt
 from scipy.constants import k as K_B
 from scipy.stats import maxwell
-from classes import Particle
+from .classes import Particle
 from random import random
-from settings import WIDTH, HEIGHT, LENGHT_BALL
+from .settings import WIDTH, HEIGHT, LENGHT_BALL
 
 def atomicMassToSI(mu):
      return (mu / 6.022e+26)
