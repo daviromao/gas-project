@@ -1,10 +1,8 @@
 import pygame
 from pygame.locals import *
-from database import WIDTH, HEIGHT, LENGHT_BALL, elements
-from functions import generateParticles, collideWall, checkCollision
-
-BLUE = pygame.Color(100, 100, 200)
-WHITE = pygame.Color(255, 255, 255)
+from database import elements
+from utils import generateParticles, collideWall, checkCollision
+from settings import *
 
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
